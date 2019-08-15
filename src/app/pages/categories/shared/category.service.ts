@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 import { Observable, throwError } from "rxjs";
 import { map, catchError, flatMap } from "rxjs/operators";
 
 import { Category } from "./category.model";
-
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +15,7 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
+
   getAll(): Observable<Category[]> {
     return this.http.get(this.apiPath).pipe(
       catchError(this.handleError),
@@ -24,17 +24,18 @@ export class CategoryService {
   }
 
   getById(id: number): Observable<Category> {
-    const url = `${this.jsonDataToCategories}/${id}`;
+    const url = `${this.apiPath}/${id}`;
+
     return this.http.get(url).pipe(
       catchError(this.handleError),
-      map(this.jsonDataCategory)
+      map(this.jsonDataToCategory)
     )
   }
 
   create(category: Category): Observable<Category> {
     return this.http.post(this.apiPath, category).pipe(
       catchError(this.handleError),
-      map(this.jsonDataCategory)
+      map(this.jsonDataToCategory)
     )
   }
 
@@ -46,6 +47,7 @@ export class CategoryService {
       map(() => category)
     )
   }
+
   delete(id: number): Observable<any> {
     const url = `${this.apiPath}/${id}`;
 
@@ -55,7 +57,9 @@ export class CategoryService {
     )
   }
 
-  //PRIVATE METHODS
+
+
+  // PRIVATE METHODS
 
   private jsonDataToCategories(jsonData: any[]): Category[] {
     const categories: Category[] = [];
@@ -63,12 +67,12 @@ export class CategoryService {
     return categories;
   }
 
-  private jsonDataCategory(jsonData: any): Category {
+  private jsonDataToCategory(jsonData: any): Category {
     return jsonData as Category;
   }
 
   private handleError(error: any): Observable<any> {
-    console.log("ERROR NA REQUISIÇÃO =>", error);
+    console.log("ERRO NA REQUISIÇÃO => ", error);
     return throwError(error);
   }
 }
