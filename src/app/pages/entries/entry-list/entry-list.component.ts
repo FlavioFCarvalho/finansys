@@ -16,6 +16,7 @@ export class EntryListComponent implements OnInit {
 
   ngOnInit() {
     this.entryService.getAll().subscribe(
+      //entries.sort((a, b) => b.id - a.id), exibe o último lançamento cadastrado.
       entries => this.entries = entries.sort((a, b) => b.id - a.id),
       error => alert('Erro ao carregar a lista')
     )
