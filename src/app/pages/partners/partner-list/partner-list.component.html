@@ -1,9 +1,43 @@
-<app-bread-crumb [items]="[{text: 'Parceiros', link:'/partners'},{text: pageTitle}]">
+<app-bread-crumb [items]="[{text: 'Parceiros'}]">
 </app-bread-crumb>
 
-<app-page-header page-title="Categorias">
+<app-page-header page-title="Parceiros" button-text="+ Novo Parceiro" button-link="new" button-class="btn-success">
 </app-page-header>
 
-<p>
-  partner-list works!
-</p>
+<table class="table table-houver">
+  <thead>
+    <tr class="bg-primary text-light">
+      <th>Parceiros</th>
+      <th>Tipo perceiro</th>
+      <th>Tipo pessoa </th>
+      <th>Documento</th>
+      <th>Ações</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let partner of resources">
+      <td>
+        <strong>{{partner.name}}</strong><br>
+      </td>
+      <td>
+        <strong [class.text-success]="partner.type == 'cliente'" [class.text-danger]="partner.type == 'fornecedor'">
+          {{partner.type}}
+        </strong>
+      </td>
+      <td>
+        <strong *ngIf="partner.tipoPessoa">{{partner.tipoPessoa}}</strong>
+      </td>
+      <td>
+        <strong *ngIf="partner.cpf ">CPF: {{partner.cpf}}</strong>
+        <strong *ngIf="partner.cnpj">CNPJ: {{partner.cnpj}}</strong>
+        <strong *ngIf="!partner.cnpj && !partner.cpf">Documento não informado</strong>
+      </td>
+
+      <td>
+        <a [routerLink]="[partner.id, 'edit']" class="btn btn-outline-info btn-sm mr-2">Editar</a>
+        <button (click)="deleteResource(partner)" class="btn btn-outline-danger btn-sm">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

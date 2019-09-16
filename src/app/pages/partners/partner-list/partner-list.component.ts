@@ -10,10 +10,6 @@ import { PartnerService } from '../shared/partner.service';
 })
 export class PartnerListComponent extends BaseResourceListComponent<Partner> {
 
-  get partners() {
-    return this.resources;
-  }
-
 
   constructor(private partnerService: PartnerService) {
     super(partnerService);

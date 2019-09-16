@@ -5,7 +5,10 @@ export class Partner extends BaseResourceModel {
     constructor(
         public id?: number,
         public name?: string,
-        public type?: string
+        public type?: string,
+        public cpf?: string,
+        public cnpj?: string,
+        public tipoPessoa?: string
     ) {
         super();
     }
