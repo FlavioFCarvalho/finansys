@@ -13,6 +13,16 @@ export class InMemoryDatabase implements InMemoryDbService {
             { id: 5, name: 'Freelas', description: 'Trabalhos como freelancer' }
         ];
 
+        const partners: Partner[] = [
+
+            { id: 1, name: 'Moradia', type: "client" },
+            { id: 2, name: 'Saúde', type: "client" },
+            { id: 3, name: 'Lazer', type: "client" },
+            { id: 4, name: 'Salário', type: "provider" },
+            { id: 5, name: 'Freelas', type: "provider" }
+
+        ];
+
         const entries: Entry[] = [
             { id: 1, name: 'Gás de Cozinha', categoryId: categories[0].id, category: categories[0], paid: true, date: "14/10/2018", amount: "70,80", type: "expense", description: "Qualquer descrição para essa despesa" } as Entry,
             { id: 2, name: 'Suplementos', categoryId: categories[1].id, category: categories[1], paid: false, date: "14/10/2018", amount: "15,00", type: "expense" } as Entry,
@@ -32,6 +42,6 @@ export class InMemoryDatabase implements InMemoryDbService {
             { id: 55, name: 'Cinema', categoryId: categories[1].id, category: categories[1], paid: false, date: "28/11/2018", amount: "30,00", type: "expense" } as Entry
         ]
 
-        return { categories, entries }
+        return { categories, partners, entries }
     }
 }
