@@ -13,6 +13,11 @@ export class Partner extends BaseResourceModel {
         super();
     }
 
+    static types = {
+        client: 'Cliente',
+        provider: 'Fornecedor'
+    };
+
     static fromJson(jsonData: any): Partner {
         return Object.assign(new Partner(), jsonData);
     }

@@ -4,6 +4,49 @@
 <app-page-header [page-title]="pageTitle" button-text="<< Voltar" button-link="/partners" button-class="btn-light">
 </app-page-header>
 
-<p>
-  partner-form works!
-</p>
+<form [formGroup]="resourceForm" (submit)="submitForm()">
+
+  <div class="card">
+    <div class="card-header">
+      Informações sobre o Parceiro
+    </div>
+
+    <div class="card-body">
+      <div class="form-row">
+        <!-- type -->
+        <div class="form-group col-md-2">
+          <label for="type">Tipo Parceiro</label>
+
+          <select name="type" id="type" formControlName="type" class="form-control">
+            <option *ngFor="let option of typeOptions" [value]="option.value">{{option.text}}</option>
+          </select>
+
+          <app-form-field-error [form-control]="resourceForm.get('type')">
+
+          </app-form-field-error>
+        </div>
+
+        <!-- name -->
+        <div class="form-group col-md-5">
+          <label for="name">Parceiro</label>
+          <input type="text" class="form-control" id="name" formControlName="name">
+
+          <app-form-field-error [form-control]="resourceForm.get('name')">
+          </app-form-field-error>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <app-server-error-messages [server-error-messages]="serverErrorMessages"></app-server-error-messages>
+
+  <button [disabled]="submittingForm || resourceForm.invalid" type="submit"
+    class="btn btn-primary btn-lg float-right mt-3">
+    Salvar
+  </button>
+
+</form>
+<pre>
+     {{resourceForm.value | json}}
+</pre>

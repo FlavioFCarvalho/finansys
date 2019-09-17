@@ -17,7 +17,8 @@ import { Partner } from '../shared/partner.model';
 export class PartnerFormComponent extends BaseResourceFormComponent<Partner> {
 
   constructor(
-    protected partnerService: PartnerService, protected injector: Injector) {
+    protected partnerService: PartnerService,
+    protected injector: Injector) {
     super(injector, new Partner, partnerService, Partner.fromJson)
   }
 
@@ -27,11 +28,21 @@ export class PartnerFormComponent extends BaseResourceFormComponent<Partner> {
       id: [null],
       name: [null, [Validators.required, Validators.minLength(2)]],
       type: [null],
+      tipoPessoa: [null],
       cpf: [null],
-      cnpj: [null],
-      tipoPessoa: [null]
-
+      cnpj: [null]
     });
+  }
+
+  get typeOptions(): Array<any> {
+    return Object.entries(Partner.types).map(
+      ([value, text]) => {
+        return {
+          text: text,
+          value: value
+        }
+      }
+    )
   }
 
   protected creationPageTitle(): string {

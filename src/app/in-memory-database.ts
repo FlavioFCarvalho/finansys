@@ -18,11 +18,11 @@ export class InMemoryDatabase implements InMemoryDbService {
 
         const partners: Partner[] = [
 
-            { id: 1, name: 'Carlos', type: "cliente", cpf: "101001001001", cnpj: "", tipoPessoa: "Física" },
-            { id: 2, name: 'Saulo', type: "cliente", cpf: "", cnpj: "101001001001", tipoPessoa: "Jurídica" },
-            { id: 3, name: 'Renato', type: "fornecedor", cpf: "", cnpj: "2222222222", tipoPessoa: "Jurídica" },
-            { id: 4, name: 'SB', type: "cliente", cpf: "3333333333", cnpj: "", tipoPessoa: "Física" },
-            { id: 5, name: 'BB', type: "fornecedor", cpf: "", cnpj: "", tipoPessoa: "Jurídica" }
+            { id: 1, name: 'Carlos', type: " client", cpf: "101001001001", cnpj: "", tipoPessoa: "Física" },
+            { id: 2, name: 'Saulo', type: " client", cpf: "", cnpj: "101001001001", tipoPessoa: "Jurídica" },
+            { id: 3, name: 'Renato', type: " provider", cpf: "", cnpj: "2222222222", tipoPessoa: "Jurídica" },
+            { id: 4, name: 'SB', type: " client", cpf: "3333333333", cnpj: "", tipoPessoa: "Física" },
+            { id: 5, name: 'BB', type: " provider", cpf: "", cnpj: "", tipoPessoa: "Jurídica" }
 
         ];
 
